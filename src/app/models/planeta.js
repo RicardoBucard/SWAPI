@@ -1,6 +1,6 @@
 const mongoose = require('../../database');
 
-const PlanetSchema = new mongoose.Schema({
+const PlanetaSchema = new mongoose.Schema({
     nome: {
         type: String,
         require: true,
@@ -19,6 +19,6 @@ const PlanetSchema = new mongoose.Schema({
     }
 });
 
-PlanetSchema.index({ nome:"text" });
-const Planet = mongoose.model('Planet', PlanetSchema);
-module.exports = Planet;
+PlanetaSchema.index({ nome:"text" });
+const Planeta = mongoose.model('Planeta', PlanetaSchema);
+module.exports = Planeta;

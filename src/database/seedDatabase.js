@@ -1,10 +1,10 @@
 const axios = require("axios");
-const Planet = require('../app/models/planet');
+const Planeta = require('../app/models/planeta');
 
 const SWAPI_HOST = "https://swapi.dev/api/";
-const TOTAL_PLANETS = 60;
+const TOTAL_PLANETAS = 60;
 
-const createPlanets = [...new Array(TOTAL_PLANETS)].map(async (_, i) => {
+const criaPlanetas = [...new Array(TOTAL_PLANETAS)].map(async (_, i) => {
   const planetId = i + 1;
   const {
     data: { name, climate, terrain, films },
@@ -15,13 +15,13 @@ const createPlanets = [...new Array(TOTAL_PLANETS)].map(async (_, i) => {
     terreno: terrain,
     aparicoesFilmes: films.length,
   };
-  const planeta = new Planet(dadosPlaneta);
-  const result = await planeta.save();
-  console.log(result);
+  const novoPlaneta = new Planeta(dadosPlaneta);
+  const resultado = await novoPlaneta.save();
+  console.log(resultado);
 });
 
 (async () => {
-  await Promise.all(createPlanets).catch((err)=>{
+  await Promise.all(criaPlanetas).catch((err)=>{
       console.log(err);
   });
   console.log("Seed do banco de dados criado com sucesso!");
